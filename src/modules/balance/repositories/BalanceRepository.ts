@@ -53,7 +53,7 @@ class BalanceRepository implements IBalanceRepository {
   async createBalance({ userId }: IBalanceRequest): Promise<void> {
     const balance = new Balance();
     balance.userId = userId;
-    balance.amount = 100;
+    balance.amount = 200;
     await this.repository.save(balance);
     return Promise.resolve();
   }
