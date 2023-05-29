@@ -15,6 +15,9 @@
   "keywords": [],
   "author": "Deco Oliveira | deco.oliveira@gmail.com",
   "license": "ISC",
+  "engines":{
+    "node": "16.16.0"
+  },
   "dependencies": {
     "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
