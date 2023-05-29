@@ -4,8 +4,6 @@
   "description": "Basic application that performs math operation and generate random strings",
   "main": "index.js",
   "scripts": {
-    "start":"node  dist/src/shared/infra/http/server.js",
-    "postinstall": "tsc",
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
@@ -14,7 +12,6 @@
     "seed:operations": "ts-node-dev -r tsconfig-paths/register  src/shared/infra/typeorm/seed/operation.ts",
     "seed:users": "ts-node-dev -r tsconfig-paths/register  src/shared/infra/typeorm/seed/users.ts"
   },
-  "engines": { "node": "16.16.0" },
   "keywords": [],
   "author": "Deco Oliveira | deco.oliveira@gmail.com",
   "license": "ISC",
