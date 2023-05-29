@@ -10,7 +10,7 @@ services:
     environment:
       - POSTGRES_USER=docker
       - POSTGRES_PASSWORD=docker
-      - POSTGRES_DB=calc
+      - POSTGRES_DB=postgres
     volumes:
       - pgdata:/data/postgres
 
