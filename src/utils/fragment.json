@@ -1,0 +1,169 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Calculator API Documentation",
+      "description": "This is the API for the Calculator",
+      "version": "1.0.0",
+      "contact": {
+        "email": "deco.oliveira@gmail.com"
+      }
+    },
+    "paths": {
+      "/api/v1/auth": {
+        "post": {
+          "tags": ["Auth"],
+          "summary": "User Authentication",
+          "description": "Authenticates user and returns authentication token to be used in API requests",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "username": "johndoe@example.com",
+                  "password": "pass123"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful authentication",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "user": {
+                        "type": "object",
+                        "properties": {
+                          "username": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "token": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "user": {
+                      "username": "demo@mail.com"
+                    },
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODQ2MjI0ODAsImV4cCI6MTY4NDgzODQ4MCwic3ViIjoiZDIyMDFjMDEtYzUyZi00YjBjLTk5ZTAtOWNmY2RkYWFlODM1In0.AGb-TxNMxf1KlFDqB_-db-eW_gVK6HFsgl0GhsmpjSw"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          },
+          "examples": {
+            "example1": {
+              "summary": "Example Request",
+              "value": {
+                "username": "exampleuser",
+                "password": "examplepassword"
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/users": {
+        "post": {
+          "tags": ["Create User"],
+          "summary": "Create User",
+          "description": "Creates a new user",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "username": "johndoe",
+                  "password": "pass123"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "User created successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "user": {
+                        "type": "object",
+                        "properties": {
+                          "username": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "token": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "user": {
+                      "username": "john@doe.com"
+                    },
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+                  }
+                }
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "client-id",
+              "in": "header",
+              "description": "Client ID",
+              "schema": {
+                "type": "string"
+              },
+              "example": "swagger-abcde"
+            }
+          ]
+        }
+      }
+    },
+    "components": {
+      "securitySchemes": {
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      }
+    }
+  }
+  

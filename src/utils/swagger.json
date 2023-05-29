@@ -1,0 +1,551 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Calculator API Documentation",
+      "description": "This is the API for the Calculator",
+      "version": "1.0.0",
+      "contact": {
+        "email": "deco.oliveira@gmail.com"
+      }
+    },
+    "paths": {
+      "/api/v1/math-operations": {
+        "post": {
+          "tags": ["Math Operations"],
+          "summary": "Perform math operations",
+          "description": "Perform math operations such as addition, subtraction, multiplication, division and square root",
+          "parameters": [
+            {
+              "name": "perform",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "enum": ["addition", "subtraction", "multiplication", "square_root"]
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "a": {
+                      "type": "number"
+                    },
+                    "b": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "example": {
+                    "a": 10,
+                    "b": 20
+                  }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Operation performed successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "result": {
+                        "type": "number"
+                      },
+                      "balance": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "example": {
+                    "result": 30,
+                    "balance": 48
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Insufficient credits to perform operation"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          },
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ]
+          
+        }
+      },
+      "/api/v1/string-operations": {
+        "post": {
+          "tags": ["String Operations"],
+          "summary": "Perform string operations",
+          "description": "Perform string operations such as random string operations",
+          "parameters": [
+            {
+              "name": "perform",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "enum": ["random_string"]
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Operation performed successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "result": {
+                        "type": "string"
+                      },
+                      "balance": {
+                        "type":"number"
+                      }
+                    }
+                  },
+                  "example": {
+                        "result": "UKZwqjh1Uchf",
+                        "balance": 48
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Insufficient credits to perform operation"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          },
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ]
+        }
+      },
+      "/api/v1/records": {
+        "get": {
+          "tags": ["Records"],
+          "summary": "Retrieve a list of all performed operation",
+          "description": "All the operations executed by the user",
+          "parameters": [
+            {
+              "name": "page",
+              "in": "query",
+              "schema": {
+                "type": "number",
+                "default":"1"
+              }
+            },
+            {
+              "name": "pageSize",
+              "in": "query",
+              "schema": {
+                "type": "number",
+                "default":"10"
+              }
+            },
+            {
+              "name": "includeDeleted",
+              "in": "query",
+              "schema": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            {
+              "name": "operation",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "enum": ["addition", "subtraction","multiplication","division","square_root","random_string"]
+              }
+            },
+            {
+              "name": "sortBy",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "enum":["operation","date","result"]
+              }
+            },
+            {
+              "name": "direction",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "enum": ["DESC", "ASC"],
+                "default":"DESC"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Operation performed successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "result": {
+                        "type": "object",
+                        "properties": {
+                          "records": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "operationType": {
+                                  "type": "string"
+                                },
+                                "operationResult": {
+                                  "type": "string"
+                                },
+                                "createdAt": {
+                                  "type": "string",
+                                  "format": "date-time"
+                                },
+                                "isDeleted": {
+                                  "type": "boolean"
+                                }
+                              }
+                            }
+                          },
+                          "total": {
+                            "type": "number"
+                          },
+                          "pages": {
+                            "type": "number"
+                          }
+                        }
+                      }
+                    },
+                    "example": {
+                      "result": {
+                        "records": [
+                          {
+                            "id": "0fe35989-b43e-412d-8abd-befaa44844f7",
+                            "operationType": "addition",
+                            "operationResult": "40",
+                            "createdAt": "2023-05-19T07:15:24.863Z",
+                            "isDeleted": false
+                          },
+                          {
+                            "id": "3921329f-1f8a-447c-b0b3-b94d1687aba8",
+                            "operationType": "subtraction",
+                            "operationResult": "23",
+                            "createdAt": "2023-05-19T07:15:37.160Z",
+                            "isDeleted": false
+                          },
+                          {
+                            "id": "1140acc5-cf81-4fed-82f5-6e2b3dee091b",
+                            "operationType": "multiplication",
+                            "operationResult": "99",
+                            "createdAt": "2023-05-19T07:15:45.991Z",
+                            "isDeleted": false
+                          }
+                        ],
+                        "total": 42,
+                        "pages": 14
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          },
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ]
+        }
+      },
+      "/api/v1/records/:id": {
+        "delete": {
+          "tags": ["Records"],
+          "summary": "Delete an operation record",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "example":"0fe35989-b43e-412d-8abd-befaa44844f7"
+              
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Operation performed successfully"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          },
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ]
+        }
+      },
+      "/api/v1/balances": {
+        "get": {
+          "tags": ["Balances"],
+          "summary": "Retrieve user's balance",
+          "description": "It retrieves information about the user’s balance",
+          "responses": {
+            "200": {
+                "description": "Operation performed successfully",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "type": "number"
+                        }
+                      }
+                    },
+                    "example": {
+                      "amount": 90
+                    }
+                  }
+                }
+              },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          },
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ]
+        },     
+        "post": {
+          "tags": ["Balances"],
+          "summary": "Add credits to user's balance",
+          "description": "Updates the user's balance by adding credits",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "amount": {
+                      "type": "number",
+                      "minimum": 100,
+                      "maximum": 900
+                    }
+                  }
+                },
+                "example": {
+                  "amount": 100
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Balance updated successfully"
+            },
+            "400": {
+              "description": "Missing or invalid credentials"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          },
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ]
+        }
+      },
+      "/api/v1/auth": {
+        "post": {
+          "tags": ["Authentication"],
+          "summary": "Login user and get an authentication token",
+          "description": "Authenticates user and returns authentication token to be used in API requests",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example":{
+                    "username":"john@doe.com",
+                    "password":"pass123"
+                }
+              }
+              
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful authentication",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "user": {
+                        "type": "object",
+                        "properties": {
+                          "username": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "token": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "user": {
+                      "username": "john@doe.com"
+                    },
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          },
+          "examples": {
+            "example1": {
+              "summary": "Example Request",
+              "value": {
+                "username": "exampleuser",
+                "password": "examplepassword"
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/users": {
+        "post": {
+          "tags": ["Create User"],
+          "summary": "Create a new user account",
+          "description": "Creates a new user",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "username": "johndoe",
+                  "password": "pass123"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "User created successfully"
+            },
+            "400": {
+              "description": "Missing or invalid credentials"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          },
+          "parameters": [
+            {
+              "name": "client-id",
+              "in": "header",
+              "description": "Client ID",
+              "schema": {
+                "type": "string"
+              },
+              "example": "swagger-abcde"
+            }
+          ]
+        }
+      }
+    },
+    "components": {
+      "securitySchemes": {
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      }
+    }
+  }
+  
