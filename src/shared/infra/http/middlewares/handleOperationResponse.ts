@@ -3,8 +3,6 @@ import { AppError } from "../../../errors/AppError";
 import { Record } from "@modules/records/infra/typeorm/entities/Record";
 import { container } from "tsyringe";
 import { AddRecordUseCase } from "@modules/records/useCases/addRecord/AddRecordUseCase";
-import { RetrieveOperationsSpecificationsUseCase } from "@modules/operations/useCases/retrieveOperationsSpecifications/RetrieveOperationsSpecificationsUseCase";
-import { UpdateBalanceUseCase } from "@modules/balance/useCases/updateBalance/UpdateUserBalanceUseCase";
 
 export async function handleOperationResponse(
   request: Request,
