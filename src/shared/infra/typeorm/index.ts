@@ -15,10 +15,10 @@ import { CreateBalance1684448539120 } from "./migrations/1684448539120-CreateBal
 
 export const dataSource = new DataSource({
   type: "postgres",
-  host: process.env.DB_HOST || "localhost",
-  username: process.env.DB_USERNAME || "docker",
-  password: process.env.DB_PASSWORD || "docker",
-  database: process.env.DB_NAME || "calc",
+  host: process.env.DB_HOST,
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   entities: [User, UserTokens, Operation, Record, Balance],
   logging: true,
 

@@ -9,7 +9,7 @@ describe("CreateInitialBalanceUseCase", () => {
   it("should create an initial balance", async () => {
     balanceRepositoryMock = {
       getBalance: jest.fn().mockResolvedValue({}),
-      updateBalance: jest.fn().mockResolvedValue(100),
+      updateBalance: jest.fn().mockResolvedValue(200),
       createBalance: jest.fn().mockResolvedValue({}),
     };
 

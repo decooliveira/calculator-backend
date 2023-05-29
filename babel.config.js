@@ -10,8 +10,8 @@ module.exports = {
           alias: {
             "@modules": "./src/modules",
             "@config": "./src/config",
-            "@shared": "./src/shared",
             "@errors": "./src/errors",
+            "@shared": "./src/shared",
             "@utils": "./src/utils",
           },
         },

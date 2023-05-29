@@ -1,14 +1,14 @@
 # CALCULATOR API Documentation
 
-## Application name: CALCULATOR API
+## CALCULATOR API
 
 **Description:** The CALCULATOR API is a simple back-end for a calculator application that performs basic mathematical operations such as addition, subtraction, multiplication, division, and square root. It also includes a feature to generate random strings with a length of 14 characters. The API is built using Node.js version 16.16 with the Express framework, TypeScript, and utilizes Postgres as the relational database management system (RDBMS).
 
 ## Usage
 
-The CALCULATOR API is a RESTful API with version 1. You can test all the available operations using the Swagger documentation. To access the documentation, please visit `{mydomain}/v1/api-docs`. Most of the features require authentication. You can either create a new user account using the "Create User" section in Swagger or use the following credentials:
+The CALCULATOR API is a RESTful API with version 1. You can test all the available operations using the Swagger documentation. To access the documentation, please visit [this page](http://ec2-3-93-170-61.compute-1.amazonaws.com:8080/v1/api-docs). Most of the features require authentication. You can either create a new user account using the "Create User" section in Swagger or use the following credentials:
 
-- **Username:** admin@demo.com
+- **Username:** admin@admin.com
 - **Password:** admin
 
 Make sure to provide a valid email address as the username and a password with a minimum of four characters.
@@ -61,7 +61,7 @@ After creating an account, you will need a JWT authentication token to make API 
 
 ## Access
 
-The CALCULATOR API is live and can be accessed at [http://appcalc.decooliveira.com.br](http://appcalc.decooliveira.com.br). The API documentation is available at [http://calc.decooliveira.com.br/api/v1](http://calc.decooliveira.com.br/api/v1). The application is deployed on AWS Cloud.
+The CALCULATOR API is live and can be accessed at [http://appcalc.decooliveira.com.br](http://appcalc.decooliveira.com.br). The API documentation is available at [http://ec2-3-93-170-61.compute-1.amazonaws.com:8080/v1/api-docs](http://ec2-3-93-170-61.compute-1.amazonaws.com:8080/v1/api-docs). The application is deployed on AWS Cloud.
 
 ## Running the Application Locally
 
