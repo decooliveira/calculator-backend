@@ -6,7 +6,7 @@
 
 ## Usage
 
-The CALCULATOR API is a RESTful API with version 1. You can test all the available operations using the Swagger documentation. To access the documentation, please visit [this page](http://app.decooliveira.com.br:8080/v1/api-docs). Most of the features require authentication. You can either create a new user account using the "Create User" section in Swagger or use the following credentials:
+The CALCULATOR API is a RESTful API with version 1. You can test all the available operations using the Swagger documentation. To access the documentation, please visit [this page](http://www.decooliveira.com.br/v1/api-docs). Most of the features require authentication. You can either create a new user account using the "Create User" section in Swagger or use the following credentials:
 
 - **Username:** admin@admin.com
 
@@ -70,7 +70,7 @@ After creating an account, you will need a JWT authentication token to make API 
 
 ## Access
 
-The CALCULATOR API is live and can be accessed at [http://calc.decooliveira.com.br/](http://appcalc.decooliveira.com.br). The API documentation is available at [http://app.decooliveira.com.br:8080/v1/api-docs/](http://app.decooliveira.com.br:8080/v1/api-docs). The application is deployed on AWS Cloud.
+The CALCULATOR API is live and can be accessed at [http://calc.decooliveira.com.br/](http://appcalc.decooliveira.com.br). The API documentation is available at [http://www.decooliveira.com.br/v1/api-docs/](http://www.decooliveira.com.br/v1/api-docs). The application is deployed on AWS Cloud.
 
 ## Running the Application Locally
 
