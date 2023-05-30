@@ -16,11 +16,11 @@ import { CreateBalance1684448539120 } from "./migrations/1684448539120-CreateBal
 
 export const dataSource = new DataSource({
   type: "postgres",
-  host: "calc.cecbcqqamk9p.us-east-1.rds.amazonaws.com",
-  username: "unclejack",
-  password: "+#1c%$jYcW5(k)d!",
-  database: "postgres",
-  port: 5432,
+  host: process.env.DB_HOST,
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: Number(process.env.DB_PORT),
   entities: [User, UserTokens, Operation, Record, Balance],
   logging: true,
 
