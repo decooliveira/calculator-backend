@@ -1,1 +1,1 @@
-web: npm install && npm run dev
+web: node dist/shared/infra/http/server.js

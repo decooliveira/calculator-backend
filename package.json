@@ -10,13 +10,15 @@
     "migrate": "npm run typeorm -- -d ./src/shared/infra/typeorm/index.ts migration:run",
     "test": "NODE_ENV=test jest --runInBand --detectOpenHandles",
     "seed:operations": "ts-node-dev -r tsconfig-paths/register  src/shared/infra/typeorm/seed/operation.ts",
-    "seed:users": "ts-node-dev -r tsconfig-paths/register  src/shared/infra/typeorm/seed/users.ts"
+    "seed:users": "ts-node-dev -r tsconfig-paths/register  src/shared/infra/typeorm/seed/users.ts",
+    "start": "node dist/shared/infra/http/server.js"
+
   },
   "keywords": [],
   "author": "Deco Oliveira | deco.oliveira@gmail.com",
   "license": "ISC",
-  "engines":{
-    "node": "16.1.0"
+  "engines": {
+    "node": "16.10.0"
   },
   "dependencies": {
     "axios": "^1.4.0",
