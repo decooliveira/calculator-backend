@@ -72,6 +72,8 @@ After creating an account, you will need a JWT authentication token to make API 
 
 The CALCULATOR API is live and can be accessed at [http://calc.decooliveira.com.br/](http://appcalc.decooliveira.com.br). The API documentation is available at [http://www.decooliveira.com.br/v1/api-docs/](http://www.decooliveira.com.br/v1/api-docs). The application is deployed on AWS Cloud.
 
+AWS stack used in this application: Route 53, Elastic Beanstalk, RDS, AWS CodePipeline, AWS CodeBuild
+
 ## Running the Application Locally
 
 To run the CALCULATOR API locally using a Docker container, follow these steps:
