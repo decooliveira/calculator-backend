@@ -5,32 +5,28 @@ import {
   JoinColumn,
   ManyToOne,
   PrimaryColumn,
-  PrimaryGeneratedColumn,
 } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 
 import { User } from "./User";
 
-@Entity("users_tokens")
-class UserTokens {
+@Entity("tokens")
+class UserToken {
   @PrimaryColumn()
   id: string;
 
   @Column()
-  refresh_token: string;
-
-  @Column()
-  user_id: string;
+  token: string;
 
   @ManyToOne(() => User)
   @JoinColumn({ name: "user_id" })
   user: User;
 
-  @Column()
-  expires_date: Date;
+  @Column({ name: "user_id" })
+  userId: string;
 
-  @CreateDateColumn()
-  created_at: Date;
+  @CreateDateColumn({ name: "created_at" })
+  createdAt: Date;
 
   constructor() {
     if (!this.id) {
@@ -39,4 +35,4 @@ class UserTokens {
   }
 }
 
-export { UserTokens };
+export { UserToken };

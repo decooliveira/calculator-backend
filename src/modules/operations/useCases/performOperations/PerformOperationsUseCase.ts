@@ -2,8 +2,6 @@ import "reflect-metadata";
 import { IRequest } from "@shared/container/interfaces/IRequest";
 import { OperationType } from "@shared/types/OperationType";
 import { AppError } from "@shared/errors/AppError";
-import { container } from "tsyringe";
-import { RandomStringGenerationUseCase } from "../generateRandomString/RandomStringGenerationUseCase";
 
 class PerformOperationUseCase {
   constructor() {}

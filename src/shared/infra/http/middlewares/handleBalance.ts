@@ -26,8 +26,12 @@ export async function handleBalance(
   //get balance
   const balance = await retrieveBalanceUseCase.execute({ userId: user.id });
 
-  if (operation.cost > balance.amount) {
+  if (balance.amount === 0) {
     throw new AppError(`You ran out of credits!`, 403);
+  }
+
+  if (operation.cost > balance.amount) {
+    throw new AppError(`You need at least ${operation.cost} credits!`, 403);
   }
 
   //charge operation

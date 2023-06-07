@@ -9,6 +9,8 @@ import { UsersRepository } from "@modules/accounts/repositories/UsersRepository"
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { AppDatasource } from "@shared/infra/typeorm/AppDatasource";
 import { IAppDatasource } from "@shared/infra/typeorm/IAppDataSource";
+import { IUserTokenRepository } from "@modules/accounts/repositories/IUserTokensRepository";
+import { UserTokenRepository } from "@modules/accounts/repositories/UserTokenRepository";
 
 container.registerSingleton<IOperationRepository>(
   "OperationRepository",
@@ -28,6 +30,11 @@ container.registerSingleton<IBalanceRepository>(
 container.registerSingleton<IUsersRepository>(
   "UsersRepository",
   UsersRepository
+);
+
+container.registerSingleton<IUserTokenRepository>(
+  "UserTokenRepository",
+  UserTokenRepository
 );
 
 container.registerSingleton<IAppDatasource>("AppDatasource", AppDatasource);

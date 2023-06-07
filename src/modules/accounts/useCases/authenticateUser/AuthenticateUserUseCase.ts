@@ -5,6 +5,8 @@ import { inject, injectable } from "tsyringe";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { AppError } from "@shared/errors/AppError";
 import auth from "@config/auth";
+import { IUserTokenRepository } from "@modules/accounts/repositories/IUserTokensRepository";
+import { UserToken } from "@modules/accounts/infra/typeorm/entities/UserToken";
 
 interface IRequest {
   username: string;
@@ -22,7 +24,10 @@ interface IResponse {
 class AuthenticateUserUseCase {
   constructor(
     @inject("UsersRepository")
-    private usersRepository: IUsersRepository
+    private usersRepository: IUsersRepository,
+
+    @inject("UserTokenRepository")
+    private userTokenRepository: IUserTokenRepository
   ) {}
 
   async execute({ username, password }: IRequest): Promise<IResponse> {
@@ -44,6 +49,11 @@ class AuthenticateUserUseCase {
       subject: user.id,
       expiresIn: expires_in_token,
     });
+
+    const userToken = new UserToken();
+    userToken.token = token;
+    userToken.userId = user.id;
+    await this.userTokenRepository.create(userToken);
 
     const tokenReturn: IResponse = {
       user: {
