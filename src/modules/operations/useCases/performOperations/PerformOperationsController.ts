@@ -12,7 +12,6 @@ class PerformOperationsController {
     const operation = String(request.query.perform);
     const params: IRequest = { a, b, operation };
     const performOperationUseCase = container.resolve(PerformOperationUseCase);
-    console.log(operation);
     const result = await performOperationUseCase.execute(params);
     request["result"] = result;
     next();

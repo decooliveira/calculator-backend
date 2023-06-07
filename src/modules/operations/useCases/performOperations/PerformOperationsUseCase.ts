@@ -9,10 +9,6 @@ class PerformOperationUseCase {
   constructor() {}
 
   async execute({ a, b, operation }: IRequest): Promise<any> {
-    const randomStringGenerationUseCase = container.resolve(
-      RandomStringGenerationUseCase
-    );
-
     let result = 0;
     switch (operation) {
       case OperationType.ADDITION:
@@ -31,6 +27,9 @@ class PerformOperationUseCase {
         result = a / b;
         break;
       case OperationType.SQUARE_ROOT:
+        if (a < 0) {
+          throw new AppError("Operand should be > 0");
+        }
         result = Math.sqrt(a);
         break;
       default:
