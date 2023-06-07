@@ -80,7 +80,9 @@ To run the CALCULATOR API locally using a Docker container, follow these steps:
 
 1. Make sure you have Docker Desktop installed, preferably version 4.16.2 (95914) or above.
 
-2. For Linux or macOS environments, execute the following scripts sequentially:
+2. Ensure that an .env file exists in the root folder and that all variables are assigned. If the .env file is missing or any variables are not assigned, create an .env file based on the .env.example file. Fill in the appropriate values for the environment variables, including the database credentials, which can be found in the docker-compose.yaml file.
+
+3. For Linux or macOS environments, execute the following scripts sequentially:
 
 `db.sh`
 `migrate.sh`
@@ -88,6 +90,6 @@ To run the CALCULATOR API locally using a Docker container, follow these steps:
 
 Those scripts are located in the scripts folder of the application. Ensure that they have execution privileges by running the following command: `chmod +x db.sh`, `chmod +x migrate.sh` and `chmod +x app.sh`.
 
-3. Once the application is up and running, you can access the API at [http://localhost:3000/api/v1](http://localhost:3000/api/v1). For detailed API documentation, visit [http://localhost:3000/api/v1/api-docs](http://localhost:3000/api/v1/api-docs).
+4. Once the application is up and running, you can access the API at [http://localhost:3000/api/v1](http://localhost:3000/api/v1). For detailed API documentation, visit [http://localhost:3000/api/v1/api-docs](http://localhost:3000/api/v1/api-docs).
 
 Please note that this documentation provides an overview of the CALCULATOR API based on the provided information. The actual API documentation may contain additional details and endpoints specific to the implementation of the Calculator API.
